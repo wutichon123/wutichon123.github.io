@@ -1,0 +1,30 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+  <script type="module" src="/assets/arscript.js"></script>
+</head>
+
+<body>
+  <a-scene mindar-image="imageTargetSrc: /markers/streamsouth.mind;" color-space="sRGB"
+    renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
+    device-orientation-permission-ui="enabled: false">
+    <a-assets>
+      <!-- Preload and store the video asset for later use -->
+      <video response-type="arraybuffer" loop crossorigin webkit-playsinline playsinline controls id="streamsouth" muted
+        preload="none">
+        <source src="/videos/streamsouth.mp4">
+      </video>
+    </a-assets>
+
+    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+    <a-entity mindar-image-target="targetIndex: 0" videohandler video-vidhandler="videoId: #streamsouth;">
+      <a-plane src="#streamsouth" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+    </a-entity>
+  </a-scene>
+</body>
+
+</html>
